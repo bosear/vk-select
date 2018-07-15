@@ -1,0 +1,263 @@
+body, html {
+    margin: 0;
+    overflow: auto;
+    font-family: -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+    background: #edeef0;
+}
+
+.vk-select-demo-container {
+    float: left;
+    height: 100%;
+    max-width: 65%;
+    min-width: 400px; /*сделать переменную*/
+    margin: 10px;
+    padding: 0 30px;
+    border: 1px solid #d3d9de;
+    background: #fff;
+}
+
+.vk-select-demo-container__item {
+    width: 400px;
+    height: 370px;
+    float: left;
+    margin-right: 30px;
+}
+
+.vk-select {
+    position: relative;
+    padding: 2px 2px 1px;
+    background: #fff;
+    border: 1px solid #d3d9de;
+    border-radius: 2px;
+}
+
+.vk-select_focused {
+    border-color: #c9d0d6;
+    border-radius: 2px 2px 0 0;
+}
+
+.vk-select__search {
+    height: 14px;
+    width: 340px;
+    padding: 4px 6px 7px;
+    margin: 0;
+    font-size: 13px;
+    border: none;
+    outline: none;
+    clear: left;
+}
+
+.vk-select__arrow {
+    width: 21px;
+    height: 25px;
+    background: url(../images/dropdown_arrow.png) no-repeat 2px 50%;
+    cursor: pointer;
+}
+
+.vk-select_direction_right {
+    float: right;
+}
+
+.vk-select_direction_left {
+    float: left;
+}
+
+.vk-select_clear-fix::after {
+    display: block;
+    content: '';
+    clear: both;
+}
+
+.vk-select_highlighted {
+    background: #cfdae6;
+}
+
+.vk-select_focused {
+    border-radius: 2px 2px 0 0;
+}
+
+.vk-select__body {
+    position: absolute;
+    top: calc(100% + 1px); /*сделать переменную*/
+    left: -1px;
+    width: 100%;
+    max-height: 240px;
+    overflow: auto;
+    border: solid #c9d0d6;
+    border-width: 0px 1px 1px;
+    border-radius: 0 0 2px 2px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .1); /*Можно ли брать стили из ВК?*/
+    background: #ffffff;
+    z-index: 50;
+}
+
+.vk-tag {
+    padding: 1px 2px 2px 1px;
+    font-size: 12.5px;
+    cursor: default;
+}
+
+.vk-tag__layout {
+    padding: 4px 5px 3px;
+    border-radius: 2px;
+}
+
+.vk-tag__layout_type_simple {
+    color: #fff;
+    background: #5181b8;
+}
+
+.vk-tag__layout_type_add-btn {
+    color: #55677d;
+    background: #dae2ea;
+    cursor: pointer;
+}
+
+.vk-tag__layout_type_add-btn:hover .vk-tag__btn_type_plus {
+    opacity: 1;
+}
+
+.vk-tag__text {
+    max-width: 230px;
+    height: 15px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    line-height: 110%;
+    padding: 0 3px;
+}
+
+.vk-tag__btn {
+    width: 12px;
+    height: 12px;
+    margin-left: 3px;
+    margin-top: 1px; /*TODO отцентровать нормально*/
+    background: url(../images/common.png) no-repeat 0 0;
+    opacity: 0.45;
+    cursor: pointer;
+    transition: opacity 200ms linear;
+}
+
+.vk-tag__btn_type_remove {
+    background-position: 1px -160px;
+}
+
+.vk-select-item__text.vk-select-item__text_type_empty { /*Что-то не так с БЭМ-ом...*/
+    font-weight: normal;
+    line-height: 15px;
+    color: #000;
+}
+
+.vk-select-item:first-child {
+    border-top: 0;
+}
+
+.vk-select-item {
+    padding: 8px 12px;
+    height: 34px;
+    border-top: 1px solid #e7e8ec;
+    cursor: pointer;
+}
+
+.vk-select-item__photo {
+    width: 34px;
+    height: 34px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
+.vk-select-item__info {
+    margin-left: 10px;
+    font-size: 12.5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.vk-select-item__text {
+    font-weight: 700;
+    line-height: 15px;
+    color: #42648b;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.vk-select-item__subtext {
+    padding-top: 4px;
+    font-weight: 400;
+    line-height: 14px;
+    color: #4e5966;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.vk-select-item_type_empty {
+    height: auto;
+    padding: 18px 15px 17px;
+    background: #fafbfc;
+    cursor: default;
+}
+
+.vk-select-item.vk-select-item_hover {
+    background: #f0f2f5;
+}
+
+
+/*TODO убрать в другой файл*/
+
+.vk-select-demo-sidebar {
+    z-index: 50;
+    float: left;
+    height: 100%;
+    min-width: 320px;
+    margin: 10px;
+    overflow: auto;
+    border: solid #c9d0d6;
+    border-width: 0px 1px 1px;
+    border-radius: 0 0 2px 2px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
+    background: #ffffff;
+}
+
+.vk-select-demo-main-header {
+    height: 45px;
+    margin-bottom: 10px;
+    line-height: 45px;
+    border-bottom: 1px solid #4a76a8;
+    background: #4a76a8;
+}
+
+.vk-select-demo-logo__image {
+    margin: 0 10px 0 180px;
+    vertical-align: middle;
+}
+
+.vk-select-demo-logo__title {
+    display: inline-block;
+    font-weight: 500;
+    font-size: 16px;
+    vertical-align: middle;
+    color: #fff;
+    text-transform: uppercase;
+    cursor: default;
+}
+
+.vk-select-demo-sidebar-item:first-child {
+    border-top: 1px solid #d3d9de;
+}
+.vk-select-demo-sidebar-item.vk-select-demo-sidebar__item_type_title { /*унаследовать в less у vk-item*/
+    height: auto;
+    padding: 18px 15px 17px;
+    font-size: 14px;
+    border-bottom: 3px solid #4a76a8;
+    background: #fafbfc;
+}
+
+.vk-select-demo-sidebar-item {
+    padding: 8px 12px;
+    height: 34px;
+    border-top: 1px solid #e7e8ec;
+
+    cursor: pointer; /*переопределить*/
+}
+
+
