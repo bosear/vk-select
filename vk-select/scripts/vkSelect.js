@@ -427,7 +427,7 @@
                     };
                     matchObj = this._highlightFilterBySearchStr(matchObj, searchStr);
 
-                    list += this._getListTemplateItem(matchObj); // TODO naming
+                    list += this._getListItemTemplate(matchObj);
                     this.displayedItems[currentItems[i][0]] = this.getItemById(currentItems[i][0]);
                     ++countDisplayedItems;
                 }
@@ -450,7 +450,7 @@
                         urlImg: this.params.getUrlImg.call(currentItems[i])
                     };
 
-                    list += this._getListTemplateItem(matchObj);
+                    list += this._getListItemTemplate(matchObj);
                     this.displayedItems[currentItems[i].id] = currentItems[i];
 
                     ++countDisplayedItems;
@@ -475,7 +475,7 @@
                     matchObj = this._highlightFilterBySearchStr(matchObj, searchStr);
 
                     if (matchObj.text !== text || matchObj.subtext !== subtext) {
-                        list += this._getListTemplateItem(matchObj); // TODO naming
+                        list += this._getListItemTemplate(matchObj);
                         this.displayedItems[currentItems[i].id] = currentItems[i];
                         ++countDisplayedItems;
                     }
@@ -501,7 +501,7 @@
             `;
         }
 
-        _getListTemplateItem(matchObj) {
+        _getListItemTemplate(matchObj) {
             if (this.params.avatars)
                 return `<div class="vk-select-item vk-select_clear-fix" data-id=${matchObj.id} onmouseover="VKSelect.hover('${this.id}', ${matchObj.id}, event)" onmousedown="VKSelect.select('${this.id}', ${matchObj.id}, event)">
                             <img class="vk-select-item__photo vk-select_direction_left"
