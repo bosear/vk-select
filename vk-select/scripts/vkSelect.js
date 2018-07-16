@@ -398,7 +398,9 @@
 
                 xhr.send(data);
             } else {
-                if (!this.listHtml)
+                if (!this.listHtml && this.params.fetch && this.onPendingResponse)
+                    return;
+                else if (!this.listHtml)
                     this.listHtml = this._getEmptyTemplateItem();
 
                 this._insertList(this.listHtml);
