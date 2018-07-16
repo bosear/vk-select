@@ -348,42 +348,46 @@
 
         _updateList(searchStr) {
             searchStr = this._trim(searchStr);
-            let listHtml = this._constructList(this.params.items, searchStr);
+            this.listHtml = this._constructList(this.params.items, searchStr);
 
-            if (this.params.fetch) {
-                if (listHtml)
-                    this._insertList(listHtml);
+            if (this.params.fetch && !this.onPendingResponse) {
+                if (this.listHtml)
+                    this._insertList(this.listHtml);
 
+                this.onPendingResponse = true;
                 let xhr = new XMLHttpRequest();
                 xhr.open('POST', this.params.url, true);
                 xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
 
                 xhr.onload = () => {
                     if (xhr.status !== 200) {
-                        if (!listHtml)
-                            listHtml = this._getEmptyTemplateItem();
+                        if (!this.listHtml)
+                            this.listHtml = this._getEmptyTemplateItem();
 
-                        this._insertList(listHtml);
+                        this.onPendingResponse = false;
+                        this._insertList(this.listHtml);
                         console.log("Ошибка " + event.target.status + " получена во время загрузки данных select-элемента с id: " + this.id + '. ' + xhr.statusText);
 
-                        return listHtml;
+                        return this.listHtml;
                     }
 
+                    this.onPendingResponse = false;
                     let items = JSON.parse(xhr.responseText); // should be array
                     if (items.length)
-                        listHtml += this._constructList(items, searchStr, true);
+                        this.listHtml += this._constructList(items, searchStr, true);
 
-                    if (!listHtml)
-                        listHtml = this._getEmptyTemplateItem();
+                    if (!this.listHtml)
+                        this.listHtml = this._getEmptyTemplateItem();
 
-                    this._insertList(listHtml);
+                    this._insertList(this.listHtml);
                 };
 
                 xhr.onerror = (event) => {
-                    if (!listHtml)
-                        listHtml = this._getEmptyTemplateItem();
+                    if (!this.listHtml)
+                        this.listHtml = this._getEmptyTemplateItem();
 
-                    this._insertList(listHtml);
+                    this.onPendingResponse = false;
+                    this._insertList(this.listHtml);
                     console.log("Ошибка " + event.target.status + " получена во время загрузки данных select-элемента с id: " + this.id + '. ' + xhr.statusText);
                 };
 
@@ -394,10 +398,10 @@
 
                 xhr.send(data);
             } else {
-                if (!listHtml)
-                    listHtml = this._getEmptyTemplateItem();
+                if (!this.listHtml)
+                    this.listHtml = this._getEmptyTemplateItem();
 
-                this._insertList(listHtml);
+                this._insertList(this.listHtml);
             }
         }
 
