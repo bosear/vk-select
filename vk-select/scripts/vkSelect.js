@@ -348,9 +348,9 @@
 
         _updateList(searchStr) {
             searchStr = this._trim(searchStr);
-            let listHtml = this._constructList(this.params.items, searchStr);   // TODO возможно стоит изменить все temaplate-ы на html?
+            let listHtml = this._constructList(this.params.items, searchStr);
 
-            if (this.params.fetch && !this.onPendingResponse) {
+            if (this.params.fetch) {
                 if (listHtml)
                     this._insertList(listHtml);
 
@@ -359,7 +359,6 @@
                 xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
 
                 xhr.onload = () => {
-                    this.onPendingResponse = false;
                     if (xhr.status !== 200) {
                         if (!listHtml)
                             listHtml = this._getEmptyTemplateItem();
@@ -384,7 +383,6 @@
                     if (!listHtml)
                         listHtml = this._getEmptyTemplateItem();
 
-                    this.onPendingResponse = false;
                     this._insertList(listHtml);
                     console.log("Ошибка " + event.target.status + " получена во время загрузки данных select-элемента с id: " + this.id + '. ' + xhr.statusText);
                 };
@@ -394,7 +392,6 @@
                     maxNumberItems: this.params.maxNumberItems
                 });
 
-                this.onPendingResponse = true;
                 xhr.send(data);
             } else {
                 if (!listHtml)
@@ -407,7 +404,7 @@
         _constructList(currentItems, searchStr, isFetch) {
             let list = '', countDisplayedItems = 0, matchObj;
 
-            if (isFetch) { //TODO hack
+            if (isFetch) {
                 countDisplayedItems = Object.keys(this.displayedItems).length;
 
                 for (let i = 0; countDisplayedItems < this.params.maxNumberItems && i < currentItems.length; i++) {
