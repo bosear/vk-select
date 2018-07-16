@@ -68,4 +68,3 @@ gulp.task('watch', () => {
 
 gulp.task('build', gulp.series('clean', gulp.parallel('html:demo', 'js:demo',  'img:vk-select', 'js:vk-select', 'less')));
 gulp.task('start', gulp.series('build', 'watch'));
-gulp.task('default', 'build');
