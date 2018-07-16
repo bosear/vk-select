@@ -350,7 +350,7 @@
             searchStr = this._trim(searchStr);
             let listHtml = this._constructList(this.params.items, searchStr);   // TODO возможно стоит изменить все temaplate-ы на html?
 
-            if (this.params.fetch) {
+            if (this.params.fetch && !this.onPendingResponse) {
                 if (listHtml)
                     this._insertList(listHtml);
 
@@ -359,6 +359,7 @@
                 xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
 
                 xhr.onload = () => {
+                    this.onPendingResponse = false;
                     if (xhr.status !== 200) {
                         if (!listHtml)
                             listHtml = this._getEmptyTemplateItem();
@@ -393,6 +394,7 @@
                     maxNumberItems: this.params.maxNumberItems
                 });
 
+                this.onPendingResponse = true;
                 xhr.send(data);
             } else {
                 if (!listHtml)
