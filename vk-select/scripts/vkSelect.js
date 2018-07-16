@@ -283,7 +283,7 @@
         _showList() {
             this.bodySelectElement.style.display = 'block';
 
-            let itemId = this.bodySelectElement.children[0].getAttribute('data-id'); // TODO hover на пустой элемент
+            let itemId = this.bodySelectElement.children[0].getAttribute('data-id');
             this.setHover(this.displayedItems[itemId], this.bodySelectElement.children[0], true);
         }
 
