@@ -1,0 +1,59 @@
+.vk-select-item {
+    height: 34px;
+    padding: 8px 12px;
+    border-top: 1px solid #e7e8ec;
+    cursor: pointer;
+
+    &__photo {
+        width: 34px;
+        height: 34px;
+        margin-right: 10px;
+        border-radius: 50%;
+    }
+
+    &__info {
+        margin-left: 10px;
+        font-size: 12.5px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    &__text {
+        font-weight: 700;
+        line-height: 15px;
+        color: #42648b;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        &&_type_empty {
+            font-weight: normal;
+            line-height: 15px;
+            color: #000;
+        }
+    }
+
+    &__subtext {
+        padding-top: 4px;
+        font-weight: 400;
+        line-height: 14px;
+        color: #4e5966;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    &_type_empty {
+        height: auto;
+        padding: 18px 15px 17px;
+        background: #fafbfc;
+        cursor: default;
+    }
+
+    &&_hover {
+        background: #f0f2f5;
+    }
+
+    &:first-child {
+        border-top: 0;
+    }
+}

@@ -1,0 +1,63 @@
+.vk-select {
+    position: relative;
+    padding: 2px 2px 1px;
+    background: #fff;
+    border: 1px solid #d3d9de;
+    border-radius: 2px;
+
+    &__search {
+        height: 14px;
+        width: 340px;
+        padding: 4px 6px 7px;
+        margin: 0;
+        font-size: 13px;
+        border: none;
+        outline: none;
+        clear: left;
+    }
+
+    &__arrow {
+        width: 21px;
+        height: 25px;
+        background: url(../images/dropdown_arrow.png) no-repeat 2px 50%;
+        cursor: pointer;
+    }
+
+    &__body {
+        position: absolute;
+        top: calc(100% + 1px); /*сделать переменную*/
+        left: -1px;
+        width: 100%;
+        max-height: 240px;
+        overflow: auto;
+        border: solid #c9d0d6;
+        border-width: 0 1px 1px;
+        border-radius: 0 0 2px 2px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
+        background: #ffffff;
+        z-index: 50;
+    }
+
+    &_focused {
+        border-color: #c9d0d6;
+        border-radius: 2px 2px 0 0;
+    }
+
+    &_direction_right {
+        float: right;
+    }
+
+    &_direction_left {
+        float: left;
+    }
+
+    &_clear-fix::after {
+        display: block;
+        content: '';
+        clear: both;
+    }
+
+    &_highlighted {
+        background: #cfdae6;
+    }
+}

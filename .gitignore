@@ -9,3 +9,5 @@ out
 gen
 node_modules
 trash.txt
+public
+public_backup

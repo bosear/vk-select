@@ -1,0 +1,49 @@
+.vk-tag {
+    padding: 1px 2px 2px 1px;
+    font-size: 12.5px;
+    cursor: default;
+
+    &__layout {
+        padding: 4px 5px 3px;
+        border-radius: 2px;
+
+        &_type_simple {
+            color: #fff;
+            background: #5181b8;
+        }
+
+        &_type_add-btn {
+            color: #55677d;
+            background: #dae2ea;
+            cursor: pointer;
+
+            &:hover .vk-tag__btn_type_plus {
+                opacity: 1;
+            }
+        }
+    }
+
+    &__text {
+        max-width: 230px;
+        height: 15px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        line-height: 110%;
+        padding: 0 3px;
+    }
+
+    &__btn {
+        width: 12px;
+        height: 12px;
+        margin-left: 3px;
+        margin-top: 1px;
+        background: url(../images/common.png) no-repeat 0 0;
+        opacity: 0.45;
+        cursor: pointer;
+        transition: opacity 200ms linear;
+
+        &_type_remove {
+            background-position: 1px -160px;
+        }
+    }
+}

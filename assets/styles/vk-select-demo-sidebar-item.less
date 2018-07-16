@@ -1,0 +1,22 @@
+.vk-select-demo-sidebar-item {
+    &:extend(.vk-select-item all);
+    cursor: default;
+
+    &__text {
+        &&_type_empty {
+            font-size: 14px;
+        }
+    }
+
+    &:first-child {
+        border-top: 1px solid #d3d9de;
+    }
+
+    &&_type_title {
+        height: auto;
+        padding: 18px 15px 17px;
+        font-size: 14px;
+        border-bottom: 3px solid #4a76a8;
+        background: #fafbfc;
+    }
+}
